@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Server, Socket } from 'socket.io';
 import { Server as HttpServer } from 'http';
 import jwt from 'jsonwebtoken';
@@ -5,6 +6,8 @@ import { config } from '../config';
 import { User } from '../models/User.model';
 import { Chat, IChat } from '../models/Chat.model';
 import { JWTPayload } from '../models/types';
+
+declare const console: Console;
 
 interface SocketUser {
   userId: string;
