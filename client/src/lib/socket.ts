@@ -68,7 +68,7 @@ export const connectSocket = (token: string): Socket => {
     socket.disconnect();
   }
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+  const apiUrl = (import.meta as any).env?.VITE_API_URL || 'http://localhost:3000';
 
   socket = io(apiUrl, {
     auth: { token },

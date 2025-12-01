@@ -29,7 +29,7 @@ interface UserProfile {
 
 export const ProfilePage: React.FC = () => {
   const navigate = useNavigate();
-  const { user, setUser } = useAuthStore();
+  const { setUser } = useAuthStore();
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   const [profile, setProfile] = useState<UserProfile | null>(null);

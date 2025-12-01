@@ -35,7 +35,7 @@ interface PhoneInputProps {
 }
 
 export const PhoneInput: React.FC<PhoneInputProps> = ({
-  value,
+  value: _value,
   onChange,
   error,
   disabled = false,

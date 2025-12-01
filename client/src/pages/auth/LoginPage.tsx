@@ -28,7 +28,7 @@ export const LoginPage: React.FC = () => {
 
     try {
       const response = await authApi.login(phoneNumber);
-      const { accessToken, refreshToken, userId } = response.data.data;
+      const { accessToken, refreshToken } = response.data.data;
 
       // Store tokens and navigate to profile setup
       setTokens(accessToken, refreshToken);
