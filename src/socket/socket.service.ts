@@ -3,7 +3,7 @@ import { Server as HttpServer } from 'http';
 import jwt from 'jsonwebtoken';
 import { config } from '../config';
 import { User } from '../models/User.model';
-import { Chat } from '../models/Chat.model';
+import { Chat, IChat } from '../models/Chat.model';
 import { JWTPayload } from '../models/types';
 
 interface SocketUser {
@@ -160,8 +160,8 @@ export class SocketService {
 
     // Get unique participant IDs (excluding the user)
     const participantIds = new Set<string>();
-    chats.forEach(chat => {
-      chat.participants.forEach(p => {
+    chats.forEach((chat: IChat) => {
+      chat.participants.forEach((p: { userId: { toString: () => string } }) => {
         if (p.userId.toString() !== userId) {
           participantIds.add(p.userId.toString());
         }
@@ -195,7 +195,7 @@ export class SocketService {
       'participants.userId': userId,
     }).select('_id');
 
-    chats.forEach(chat => {
+    chats.forEach((chat: IChat) => {
       socket.join(`chat:${chat._id}`);
     });
   }
